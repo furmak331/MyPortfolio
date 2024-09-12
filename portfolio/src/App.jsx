@@ -8,7 +8,7 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
 import CrystalBackground from './components/CrystalBackground';
-
+import Footer from './components/Footer';
 const AppContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
@@ -70,6 +70,11 @@ function App() {
       <FadeInSection>
         <Section>
           <Contact />
+        </Section>
+      </FadeInSection>
+      <FadeInSection>
+        <Section>
+          <Footer />
         </Section>
       </FadeInSection>
     </AppContainer>
