@@ -68,7 +68,7 @@ Hey, I’m [Your Name](https://github.com/your-github). This portfolio is just a
 
 ## ⭐ Fun Extras!
 > If you liked this portfolio, please give it a ⭐ on GitHub or send me a **tweet** with your thoughts!  
-### [![Twitter Follow](https://img.shields.io/twitter/follow/your_handle?style=social)](https://twitter.com/your_handle)
+### [![Twitter Follow](https://img.shields.io/twitter/follow/furmak?style=social)](https://twitter.com/furmak)
 
 ---
 
