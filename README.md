@@ -2,7 +2,7 @@ Here’s a bold and crazy README for your portfolio website:
 
 ---
 
-# ⚡ Welcome to My Portfolio! ⚡  
+#  Welcome to My Portfolio! ;)  
 ### Built with [React](https://reactjs.org/), [Three.js](https://threejs.org/), and a hint of madness! 
 
 ![Portfolio Preview](https://user-images.githubusercontent.com/your-gif-link)  
