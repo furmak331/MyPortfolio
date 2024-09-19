@@ -14,20 +14,22 @@ const HeroContainer = styled.section`
   overflow: hidden;
 `;
 
+
 const GlowingName = styled(motion.h1)`
   font-size: 64px;
   font-weight: 900;
   margin-bottom: 20px;
-  background: linear-gradient(45deg, #f3ec78, #af4261);
+  background: linear-gradient(45deg, #C0C0C0, #E8E8E8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   position: relative;
   cursor: default;
   z-index: 1;
   transition: text-shadow 0.3s ease;
+  font-family: 'Montserrat', sans-serif; // A more modern, sleek font
 
   &:hover {
-    text-shadow: 0 0 10px rgba(243, 236, 120, 0.5), 0 0 20px rgba(175, 66, 97, 0.3);
+    text-shadow: 0 0 10px rgba(192, 192, 192, 0.5), 0 0 20px rgba(232, 232, 232, 0.3);
   }
 `;
 
@@ -170,6 +172,7 @@ function Hero() {
   }, []);
 
   return (
+     
     <HeroContainer>
       <CursorCanvas ref={canvasRef} />
       <GlowingName
@@ -178,7 +181,7 @@ function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        Furqan Makhdoomi
+        Furqan Makhdoomii
       </GlowingName>
       <Title
         initial={{ opacity: 0, y: 20 }}
