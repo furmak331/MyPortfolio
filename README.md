@@ -47,7 +47,7 @@ npm start
 ## 📸 Visuals? Here You Go!
 
 ### Full Preview
-![Website Preview](furqanmakhdoomi.netlify.app)
+![Website Preview](https://furqanmakhdoomi.netlify.app)
 
 ### 3D Hover Effect in Action:
 ![Hover Effect](https://your-crazy-gif-url)
