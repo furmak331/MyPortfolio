@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaReact, FaNodeJs, FaDatabase, FaGithub, FaExternalLinkAlt, FaPython } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs, FaPython, FaDatabase } from 'react-icons/fa';
 import { SiExpress, SiMysql, SiThreedotjs, SiSelenium, SiGooglesheets } from 'react-icons/si';
 
 const ProjectsContainer = styled.div`
@@ -95,7 +95,6 @@ const TechItem = styled.span`
 `;
 
 const projects = [
-
   {
     title: 'EZ Reserve',
     description: 'A centralized reservation system that streamlines the booking process for various services.',
@@ -111,17 +110,71 @@ const projects = [
       { name: 'Express', icon: SiExpress },
       { name: 'Three.js', icon: SiThreedotjs },
     ],
-    github: 'https://github.com/yourusername/ez-reserve',
-    live: 'https://ez-reserve.com',
+    github: 'https://github.com/furmak331/EZ-Reserve',
+    live: '',
   },
   {
-    title: 'Car Rental Platform',
-    description: 'A comprehensive car rental solution that connects vehicle owners with potential renters.',
+    title: 'Identity Theft Analysis',
+    description: 'Analyzed trends in identity theft cases over 25 years using Python data analysis tools.',
     features: [
-      'Advanced search and filtering options',
-      'User authentication and profile management',
-      'Booking system with real-time updates',
-      'Review and rating system for both renters and car owners',
+      'Created visualizations to present insights for policy development',
+      'Examined correlations with socio-economic factors using statistical analysis',
+    ],
+    techStack: [
+      { name: 'Python', icon: FaPython },
+      { name: 'Pandas', icon: FaDatabase },
+      { name: 'Matplotlib', icon: FaDatabase },
+    ],
+    github: 'https://github.com/furmak331/identitytheftanalysis',
+    live: '',
+  },
+  {
+    title: 'Vision OCR',
+    description: 'Developing OCR system for regional languages using computer vision language models.',
+    features: [
+      'Implementing Transformers Qwen 2-VL model for improved text recognition accuracy',
+      'Implementing it with tesseract library',
+    ],
+    techStack: [
+      { name: 'Computer Vision', icon: FaDatabase },
+      { name: 'Deep Learning', icon: FaDatabase },
+    ],
+    github: 'https://github.com/furmak331/Vision-OCR',
+    live: '',
+  },
+  {
+    title: 'Zimbra Email Server Automation',
+    description: 'Developed a script to automate user management on a Zimbra mail server.',
+    features: [
+      'Implemented automated DNS configuration using dnsmasq to streamline domain management tasks',
+      'Reduced manual workload by 80% and ensured consistency in server setup',
+    ],
+    techStack: [
+      { name: 'Bash', icon: FaDatabase },
+      { name: 'Python', icon: FaPython },
+    ],
+    github: 'https://github.com/furmak331/zimbra-automation',
+    live: '',
+  },
+  {
+    title: 'Agrobot',
+    description: 'AI-based advisory bot for farmers in Kashmir that provides real-time guidance on crop choices, pest management, weather conditions, and market prices.',
+    features: [
+      'Uses local language processing, regional datasets, and automation to make it accessible and effective for farmers in the valley',
+    ],
+    techStack: [
+      { name: 'Python', icon: FaPython },
+      { name: 'NLP', icon: FaDatabase },
+      { name: 'Data Analysis', icon: FaDatabase },
+    ],
+    github: 'https://github.com/furmak331/agrobot',
+    live: '',
+  },
+  {
+    title: 'CarWar: Car Rental Website',
+    description: 'Developed a responsive car rental platform with Node.js backend and MySQL database.',
+    features: [
+      'Implemented user authentication and concurrent booking management system',
     ],
     techStack: [
       { name: 'Node.js', icon: FaNodeJs },
@@ -129,44 +182,8 @@ const projects = [
       { name: 'MySQL', icon: SiMysql },
       { name: 'React', icon: FaReact },
     ],
-    github: 'https://github.com/yourusername/car-rental-platform',
-    live: 'https://car-rental-platform.com',
-  },
-  {
-    title: 'Automated Web Accessibility Tester',
-    description: 'A Python-based tool that automates web accessibility testing, helping developers create more inclusive websites.',
-    features: [
-      'Scans websites for common accessibility issues',
-      'Generates detailed reports with suggestions for improvements',
-      'Supports multiple accessibility guidelines (WCAG 2.1, Section 508)',
-      'Integrates with CI/CD pipelines for automated testing',
-      'Exports results to various formats (PDF, CSV, JSON)',
-    ],
-    techStack: [
-      { name: 'Python', icon: FaPython },
-      { name: 'Selenium', icon: SiSelenium },
-      { name: 'Google Sheets API', icon: SiGooglesheets },
-    ],
-    github: 'https://github.com/yourusername/web-accessibility-tester',
-    live: 'https://web-accessibility-tester.com',
-  },
-  {
-    title: 'Food Delivery App',
-    description: 'A responsive food delivery application that connects local restaurants with hungry customers.',
-    features: [
-      'Geolocation-based restaurant discovery',
-      'Real-time order tracking',
-      'In-app messaging between customers and delivery personnel',
-      'Integration with popular payment gateways',
-    ],
-    techStack: [
-      { name: 'React', icon: FaReact },
-      { name: 'Node.js', icon: FaNodeJs },
-      { name: 'MongoDB', icon: FaDatabase },
-      { name: 'Express', icon: SiExpress },
-    ],
-    github: 'https://github.com/yourusername/food-delivery-app',
-    live: 'https://food-delivery-app.com',
+    github: 'https://github.com/furmak331/carwar',
+    live: '',
   },
 ];
 
