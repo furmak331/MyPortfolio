@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaReact, FaNodeJs, FaDatabase, FaGithub, FaExternalLinkAlt, FaPython } from 'react-icons/fa';
-import { SiExpress, SiMysql, SiThreedotjs, SiSelenium, SiGooglesheets } from 'react-icons/si';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
 const ProjectsContainer = styled.div`
   display: flex;
@@ -95,79 +94,7 @@ const TechItem = styled.span`
 `;
 
 const projects = [
-
-  {
-    title: 'EZ Reserve',
-    description: 'A centralized reservation system that streamlines the booking process for various services.',
-    features: [
-      'User-friendly interface for easy booking management',
-      'Real-time availability updates',
-      'Integration with 3D visualization for venue layouts',
-      'Secure payment processing',
-    ],
-    techStack: [
-      { name: 'React', icon: FaReact },
-      { name: 'Node.js', icon: FaNodeJs },
-      { name: 'Express', icon: SiExpress },
-      { name: 'Three.js', icon: SiThreedotjs },
-    ],
-    github: 'https://github.com/yourusername/ez-reserve',
-    live: 'https://ez-reserve.com',
-  },
-  {
-    title: 'Car Rental Platform',
-    description: 'A comprehensive car rental solution that connects vehicle owners with potential renters.',
-    features: [
-      'Advanced search and filtering options',
-      'User authentication and profile management',
-      'Booking system with real-time updates',
-      'Review and rating system for both renters and car owners',
-    ],
-    techStack: [
-      { name: 'Node.js', icon: FaNodeJs },
-      { name: 'Express', icon: SiExpress },
-      { name: 'MySQL', icon: SiMysql },
-      { name: 'React', icon: FaReact },
-    ],
-    github: 'https://github.com/yourusername/car-rental-platform',
-    live: 'https://car-rental-platform.com',
-  },
-  {
-    title: 'Automated Web Accessibility Tester',
-    description: 'A Python-based tool that automates web accessibility testing, helping developers create more inclusive websites.',
-    features: [
-      'Scans websites for common accessibility issues',
-      'Generates detailed reports with suggestions for improvements',
-      'Supports multiple accessibility guidelines (WCAG 2.1, Section 508)',
-      'Integrates with CI/CD pipelines for automated testing',
-      'Exports results to various formats (PDF, CSV, JSON)',
-    ],
-    techStack: [
-      { name: 'Python', icon: FaPython },
-      { name: 'Selenium', icon: SiSelenium },
-      { name: 'Google Sheets API', icon: SiGooglesheets },
-    ],
-    github: 'https://github.com/yourusername/web-accessibility-tester',
-    live: 'https://web-accessibility-tester.com',
-  },
-  {
-    title: 'Food Delivery App',
-    description: 'A responsive food delivery application that connects local restaurants with hungry customers.',
-    features: [
-      'Geolocation-based restaurant discovery',
-      'Real-time order tracking',
-      'In-app messaging between customers and delivery personnel',
-      'Integration with popular payment gateways',
-    ],
-    techStack: [
-      { name: 'React', icon: FaReact },
-      { name: 'Node.js', icon: FaNodeJs },
-      { name: 'MongoDB', icon: FaDatabase },
-      { name: 'Express', icon: SiExpress },
-    ],
-    github: 'https://github.com/yourusername/food-delivery-app',
-    live: 'https://food-delivery-app.com',
-  },
+  // Your project data goes here
 ];
 
 function Projects() {
