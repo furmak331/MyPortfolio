@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs, FaPython, FaDatabase } from 'react-icons/fa';
+import { SiExpress, SiMysql, SiThreedotjs, SiSelenium, SiGooglesheets } from 'react-icons/si';
 
 const ProjectsContainer = styled.div`
   display: flex;
@@ -94,7 +95,96 @@ const TechItem = styled.span`
 `;
 
 const projects = [
-  // Your project data goes here
+  {
+    title: 'EZ Reserve',
+    description: 'A centralized reservation system that streamlines the booking process for various services.',
+    features: [
+      'User-friendly interface for easy booking management',
+      'Real-time availability updates',
+      'Integration with 3D visualization for venue layouts',
+      'Secure payment processing',
+    ],
+    techStack: [
+      { name: 'React', icon: FaReact },
+      { name: 'Node.js', icon: FaNodeJs },
+      { name: 'Express', icon: SiExpress },
+      { name: 'Three.js', icon: SiThreedotjs },
+    ],
+    github: 'https://github.com/furmak331/EZ-Reserve',
+    live: '',
+  },
+  {
+    title: 'Identity Theft Analysis',
+    description: 'Analyzed trends in identity theft cases over 25 years using Python data analysis tools.',
+    features: [
+      'Created visualizations to present insights for policy development',
+      'Examined correlations with socio-economic factors using statistical analysis',
+    ],
+    techStack: [
+      { name: 'Python', icon: FaPython },
+      { name: 'Pandas', icon: FaDatabase },
+      { name: 'Matplotlib', icon: FaDatabase },
+    ],
+    github: 'https://github.com/furmak331/identitytheftanalysis',
+    live: '',
+  },
+  {
+    title: 'Vision OCR',
+    description: 'Developing OCR system for regional languages using computer vision language models.',
+    features: [
+      'Implementing Transformers Qwen 2-VL model for improved text recognition accuracy',
+      'Implementing it with tesseract library',
+    ],
+    techStack: [
+      { name: 'Computer Vision', icon: FaDatabase },
+      { name: 'Deep Learning', icon: FaDatabase },
+    ],
+    github: 'https://github.com/furmak331/Vision-OCR',
+    live: '',
+  },
+  {
+    title: 'Zimbra Email Server Automation',
+    description: 'Developed a script to automate user management on a Zimbra mail server.',
+    features: [
+      'Implemented automated DNS configuration using dnsmasq to streamline domain management tasks',
+      'Reduced manual workload by 80% and ensured consistency in server setup',
+    ],
+    techStack: [
+      { name: 'Bash', icon: FaDatabase },
+      { name: 'Python', icon: FaPython },
+    ],
+    github: 'https://github.com/furmak331/zimbra-automation',
+    live: '',
+  },
+  {
+    title: 'Agrobot',
+    description: 'AI-based advisory bot for farmers in Kashmir that provides real-time guidance on crop choices, pest management, weather conditions, and market prices.',
+    features: [
+      'Uses local language processing, regional datasets, and automation to make it accessible and effective for farmers in the valley',
+    ],
+    techStack: [
+      { name: 'Python', icon: FaPython },
+      { name: 'NLP', icon: FaDatabase },
+      { name: 'Data Analysis', icon: FaDatabase },
+    ],
+    github: 'https://github.com/furmak331/agrobot',
+    live: '',
+  },
+  {
+    title: 'CarWar: Car Rental Website',
+    description: 'Developed a responsive car rental platform with Node.js backend and MySQL database.',
+    features: [
+      'Implemented user authentication and concurrent booking management system',
+    ],
+    techStack: [
+      { name: 'Node.js', icon: FaNodeJs },
+      { name: 'Express', icon: SiExpress },
+      { name: 'MySQL', icon: SiMysql },
+      { name: 'React', icon: FaReact },
+    ],
+    github: 'https://github.com/furmak331/carwar',
+    live: '',
+  },
 ];
 
 function Projects() {
