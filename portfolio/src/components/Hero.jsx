@@ -1,7 +1,7 @@
-// src/components/Hero.jsx
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { FaArrowDown } from 'react-icons/fa';
 
 const HeroContainer = styled.section`
   height: 100vh;
@@ -14,9 +14,13 @@ const HeroContainer = styled.section`
   overflow: hidden;
 `;
 
+const TypewriterWrapper = styled.div`
+  min-height: 40px;
+  margin-bottom: 20px;
+`;
 
 const GlowingName = styled(motion.h1)`
-  font-size: 64px;
+  font-size: 4rem;
   font-weight: 900;
   margin-bottom: 20px;
   background: linear-gradient(45deg, #C0C0C0, #E8E8E8);
@@ -26,41 +30,92 @@ const GlowingName = styled(motion.h1)`
   cursor: default;
   z-index: 1;
   transition: text-shadow 0.3s ease;
-  font-family: 'Montserrat', sans-serif; // A more modern, sleek font
+  font-family: 'Space Grotesk', sans-serif;
 
   &:hover {
     text-shadow: 0 0 10px rgba(192, 192, 192, 0.5), 0 0 20px rgba(232, 232, 232, 0.3);
   }
+  
+  @media (max-width: 768px) {
+    font-size: 3rem;
+  }
 `;
 
 const Title = styled(motion.h2)`
-  font-size: 36px;
+  font-size: 2.25rem;
   color: #00acee;
   margin-bottom: 20px;
+  
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
 `;
 
 const Subtitle = styled(motion.p)`
-  font-size: 24px;
-  max-width: 600px;
+  font-size: 1.5rem;
+  max-width: 700px;
   line-height: 1.5;
   margin-bottom: 30px;
+  
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+    padding: 0 20px;
+  }
 `;
 
 const CTAButton = styled(motion.a)`
-  background-color: #00acee;
+  background: linear-gradient(45deg, #00acee, #0086b3);
   color: #fff;
-  padding: 12px 24px;
+  padding: 15px 30px;
   border-radius: 30px;
   text-decoration: none;
   font-weight: bold;
   font-size: 18px;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: #0086b3;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 172, 238, 0.3);
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #af4261, #f3ec78);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
+  
+  &:hover:before {
+    opacity: 1;
+  }
+`;
+
+const ScrollIndicator = styled(motion.div)`
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+`;
+
+const ScrollText = styled.span`
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  opacity: 0.8;
+`;
+
+const ScrollIcon = styled(motion.div)`
+  font-size: 20px;
 `;
 
 const CursorCanvas = styled.canvas`
@@ -76,7 +131,58 @@ const CursorCanvas = styled.canvas`
 function Hero() {
   const canvasRef = useRef(null);
   const nameRef = useRef(null);
+  const [typedText, setTypedText] = useState('');
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+  
+  const phrases = [
+    'Full Stack Web Developer',
+    'Software Engineer',
+    'UI/UX Enthusiast',
+    'Problem Solver'
+  ];
+  
+  // Typewriter effect
+  useEffect(() => {
+    const phrase = phrases[currentPhraseIndex];
+    let charIndex = 0;
+    let isDeleting = false;
+    let timeout;
+    
+    const type = () => {
+      const currentPhrase = phrases[currentPhraseIndex];
+      
+      if (!isDeleting) {
+        setTypedText(currentPhrase.substring(0, charIndex + 1));
+        charIndex++;
+        
+        if (charIndex === currentPhrase.length) {
+          isDeleting = true;
+          timeout = setTimeout(type, 1500); // Pause at full phrase
+          return;
+        }
+      } else {
+        setTypedText(currentPhrase.substring(0, charIndex - 1));
+        charIndex--;
+        
+        if (charIndex === 0) {
+          isDeleting = false;
+          setCurrentPhraseIndex((prevIndex) => 
+            (prevIndex + 1) % phrases.length
+          );
+        }
+      }
+      
+      // Adjust typing speed
+      const typingSpeed = isDeleting ? 40 : 80;
+      timeout = setTimeout(type, typingSpeed);
+    };
+    
+    timeout = setTimeout(type, 500);
+    
+    return () => clearTimeout(timeout);
+  }, [currentPhraseIndex]);
 
+  // Mouse effect
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
@@ -86,7 +192,7 @@ function Hero() {
 
     const cursorTrail = [];
     const trailLength = 20;
-    const colors = ['#f3ec78', '#af4261']; // Colors from the GlowingName gradient
+    const colors = ['#00acee', '#af4261'];
 
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -132,83 +238,4 @@ function Hero() {
 
       // Glow effect
       ctx.filter = 'blur(8px)';
-      ctx.globalCompositeOperation = 'lighter';
-      ctx.drawImage(canvas, 0, 0);
-      ctx.filter = 'none';
-      ctx.globalCompositeOperation = 'source-over';
-
-      animationFrameId = requestAnimationFrame(animate);
-    }
-
-    function handleMouseMove(event) {
-      mouseX = event.clientX;
-      mouseY = event.clientY;
-
-      if (nameRef.current) {
-        const rect = nameRef.current.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const angleX = (mouseX - centerX) / (window.innerWidth / 2);
-        const angleY = (mouseY - centerY) / (window.innerHeight / 2);
-        nameRef.current.style.transform = `perspective(1000px) rotateY(${angleX * 5}deg) rotateX(${-angleY * 5}deg)`;
-      }
-    }
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-    animate();
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('resize', resizeCanvas);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
-  return (
-     
-    <HeroContainer>
-      <CursorCanvas ref={canvasRef} />
-      <GlowingName
-        ref={nameRef}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        Furqan Makhdoomi
-      </GlowingName>
-      <Title
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      >
-        Full Stack Web Developer
-      </Title>
-      <Subtitle
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-      >
-        Crafting cutting-edge software solutions, innovative products, and immersive digital experiences.
-      </Subtitle>
-      <CTAButton
-        href="#about"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        Learn More
-      </CTAButton>
-    </HeroContainer>
-  );
-}
-
-export default Hero;
+      ctx.globalComposite
