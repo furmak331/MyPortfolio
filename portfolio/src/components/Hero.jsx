@@ -135,10 +135,9 @@ function Hero() {
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   
   const phrases = [
-    'Full Stack Web Developer',
-    'Software Engineer',
-    'UI/UX Enthusiast',
-    'Problem Solver'
+    'Cybersec Professional',
+    'Web Developer',
+    'Security Research',
   ];
   
   // Typewriter effect
@@ -327,7 +326,7 @@ function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.6 }}
       >
-        Creating modern, responsive web applications with cutting-edge technologies
+        Breaking stuff before you do 
       </Subtitle>
       
       <CTAButton
