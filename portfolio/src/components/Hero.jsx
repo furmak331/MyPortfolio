@@ -238,4 +238,127 @@ function Hero() {
 
       // Glow effect
       ctx.filter = 'blur(8px)';
-      ctx.globalComposite
+      ctx.globalCompositeOperation = 'lighter';
+      
+      if (cursorTrail.length > 2) {
+        ctx.beginPath();
+        ctx.moveTo(cursorTrail[0].x, cursorTrail[0].y);
+
+        for (let i = 1; i < cursorTrail.length - 2; i++) {
+          const xc = (cursorTrail[i].x + cursorTrail[i + 1].x) / 2;
+          const yc = (cursorTrail[i].y + cursorTrail[i + 1].y) / 2;
+          ctx.quadraticCurveTo(cursorTrail[i].x, cursorTrail[i].y, xc, yc);
+        }
+
+        ctx.quadraticCurveTo(
+          cursorTrail[cursorTrail.length - 2].x,
+          cursorTrail[cursorTrail.length - 2].y,
+          cursorTrail[cursorTrail.length - 1].x,
+          cursorTrail[cursorTrail.length - 1].y
+        );
+
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+        ctx.stroke();
+      }
+      
+      // Reset composite operation and filter
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.filter = 'none';
+      
+      animationFrameId = requestAnimationFrame(animate);
+    }
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function handleMouseMove(e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    resizeCanvas();
+    animate();
+
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  // Scroll to next section
+  const scrollToNextSection = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  };
+
+  return (
+    <HeroContainer>
+      <GlowingName 
+        ref={nameRef}
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        John Doe
+      </GlowingName>
+      
+      <TypewriterWrapper>
+        <Title
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          {typedText}
+          <span className="cursor">|</span>
+        </Title>
+      </TypewriterWrapper>
+      
+      <Subtitle
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+      >
+        Creating modern, responsive web applications with cutting-edge technologies
+      </Subtitle>
+      
+      <CTAButton
+        href="#contact"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.9 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        Get In Touch
+      </CTAButton>
+      
+      <ScrollIndicator
+        onClick={scrollToNextSection}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.5 }}
+      >
+        <ScrollText>SCROLL DOWN</ScrollText>
+        <ScrollIcon
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+        >
+          <FaArrowDown />
+        </ScrollIcon>
+      </ScrollIndicator>
+      
+      <CursorCanvas ref={canvasRef} />
+    </HeroContainer>
+  );
+}
+
+export default Hero;
