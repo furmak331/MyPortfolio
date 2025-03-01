@@ -308,7 +308,7 @@ function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        John Doe
+        Furqan Makhdoomi
       </GlowingName>
       
       <TypewriterWrapper>
