@@ -46,10 +46,12 @@ function Header() {
         FM
       </Logo>
       <Nav>
-        {['Projects', 'About', 'Contact'].map((item, index) => (
+        {['Projects', 'About', 'Contact', 'Blog'].map((item, index) => (
           <NavLink
             key={item}
-            href={`#${item.toLowerCase()}`}
+            href={item === 'Blog' ? 'https://www.google.com' : `#${item.toLowerCase()}`}
+            target={item === 'Blog' ? '_blank' : '_self'}
+            rel={item === 'Blog' ? 'noopener noreferrer' : ''}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}

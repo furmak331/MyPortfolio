@@ -1,26 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs, FaPython, FaDatabase } from 'react-icons/fa';
-import { SiExpress, SiMysql, SiThreedotjs, SiSelenium, SiGooglesheets } from 'react-icons/si';
+import { FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs, FaPython, FaDatabase, FaLock, FaShieldAlt, FaCode, FaServer } from 'react-icons/fa';
+import { SiExpress, SiMysql, SiThreedotjs, SiC, SiRust, SiKalilinux, SiLinux } from 'react-icons/si';
 
 const ProjectsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
 `;
 
 const ProjectCard = styled(motion.div)`
   background-color: rgba(17, 17, 17, 0.7);
-  border-radius: 15px;
+  border-left: 3px solid #3DE67B;
+  border-radius: 5px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
 `;
 
 const ProjectHeader = styled.div`
-  background-color: rgba(0, 0, 0, 0.2);
   padding: 20px;
   display: flex;
   justify-content: space-between;
@@ -28,8 +31,13 @@ const ProjectHeader = styled.div`
 `;
 
 const ProjectTitle = styled.h3`
-  font-size: 24px;
+  font-size: 22px;
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #3DE67B;
+  font-family: 'Space Grotesk', monospace;
 `;
 
 const ProjectLinks = styled.div`
@@ -42,7 +50,7 @@ const ProjectLink = styled.a`
   font-size: 20px;
   transition: color 0.3s ease;
   &:hover {
-    color: #00acee;
+    color: #3DE67B;
   }
 `;
 
@@ -55,6 +63,7 @@ const ProjectDescription = styled.p`
   color: #ddd;
   line-height: 1.6;
   margin-bottom: 20px;
+  font-family: 'Space Grotesk', monospace;
 `;
 
 const ProjectFeatures = styled.ul`
@@ -67,9 +76,10 @@ const ProjectFeature = styled.li`
   font-size: 14px;
   color: #bbb;
   margin-bottom: 8px;
+  font-family: 'Space Grotesk', monospace;
   &:before {
-    content: '•';
-    color: #00acee;
+    content: '>';
+    color: #3DE67B;
     font-weight: bold;
     display: inline-block;
     width: 1em;
@@ -84,25 +94,62 @@ const TechStack = styled.div`
 `;
 
 const TechItem = styled.span`
-  background-color: rgba(0, 172, 238, 0.1);
-  color: #00acee;
+  background-color: rgba(61, 230, 123, 0.1);
+  color: #3DE67B;
   padding: 5px 10px;
   border-radius: 15px;
   font-size: 14px;
   display: flex;
   align-items: center;
   gap: 5px;
+  font-family: 'Space Grotesk', monospace;
 `;
 
 const projects = [
   {
-    title: 'EZ Reserve',
-    description: 'A centralized reservation system that streamlines the booking process for various services.',
+    title: 'DiTRU: Quantum-Resistant Cryptography',
+    description: 'Implemented advanced lattice-based post-quantum cryptosystems using a novel dihedral polynomial structure to ensure security against quantum computing threats.',
     features: [
-      'User-friendly interface for easy booking management',
-      'Real-time availability updates',
+      'Developed novel cryptographic primitives resistant to quantum attacks',
+      'Implemented key exchange and digital signature schemes',
+      'Optimized performance for resource-constrained environments',
+      'Conducted security analysis against known quantum algorithms',
+    ],
+    techStack: [
+      { name: 'C', icon: SiC },
+      { name: 'Python', icon: FaPython },
+      { name: 'SageMath', icon: FaCode },
+      { name: 'Cryptography', icon: FaLock },
+    ],
+    github: 'https://github.com/furmak331/DiTRU_',
+    live: '',
+  },
+  {
+    title: 'Exploitohorizon',
+    description: 'A modular, gamified cybersecurity training platform designed to teach offensive security techniques in an engaging, hands-on environment.',
+    features: [
+      'Interactive labs for practicing real-world exploitation techniques',
+      'Progressive difficulty levels with achievement system',
+      'Realistic vulnerable environments for ethical hacking practice',
+      'Comprehensive tracking of skills development and progress',
+    ],
+    techStack: [
+      { name: 'React', icon: FaReact },
+      { name: 'Node.js', icon: FaNodeJs },
+      { name: 'Docker', icon: FaServer },
+      { name: 'Kali Linux', icon: SiKalilinux },
+    ],
+    github: 'https://github.com/furmak331/exploitohorizon',
+    live: '',
+  },
+  {
+    title: 'EZ Reserve',
+    description: 'A centralized reservation system that streamlines the booking process for various services with enhanced security features to protect user data.',
+    features: [
+      'End-to-end encrypted user data and payment processing',
+      'Secure authentication with multi-factor options',
+      'Real-time availability updates with tamper-proof logging',
       'Integration with 3D visualization for venue layouts',
-      'Secure payment processing',
     ],
     techStack: [
       { name: 'React', icon: FaReact },
@@ -114,67 +161,31 @@ const projects = [
     live: '',
   },
   {
-    title: 'Identity Theft Analysis',
-    description: 'Analyzed trends in identity theft cases over 25 years using Python data analysis tools.',
-    features: [
-      'Created visualizations to present insights for policy development',
-      'Examined correlations with socio-economic factors using statistical analysis',
-    ],
-    techStack: [
-      { name: 'Python', icon: FaPython },
-      { name: 'Pandas', icon: FaDatabase },
-      { name: 'Matplotlib', icon: FaDatabase },
-    ],
-    github: 'https://github.com/furmak331/identitytheftanalysis',
-    live: '',
-  },
-  {
-    title: 'Vision OCR',
-    description: 'Developing OCR system for regional languages using computer vision language models.',
-    features: [
-      'Implementing Transformers Qwen 2-VL model for improved text recognition accuracy',
-      'Implementing it with tesseract library',
-    ],
-    techStack: [
-      { name: 'Computer Vision', icon: FaDatabase },
-      { name: 'Deep Learning', icon: FaDatabase },
-    ],
-    github: 'https://github.com/furmak331/Vision-OCR',
-    live: '',
-  },
-  {
-    title: 'Zimbra Email Server Automation',
-    description: 'Developed a script to automate user management on a Zimbra mail server.',
-    features: [
-      'Implemented automated DNS configuration using dnsmasq to streamline domain management tasks',
-      'Reduced manual workload by 80% and ensured consistency in server setup',
-    ],
-    techStack: [
-      { name: 'Bash', icon: FaDatabase },
-      { name: 'Python', icon: FaPython },
-    ],
-    github: 'https://github.com/furmak331/zimbra-automation',
-    live: '',
-  },
-  {
     title: 'Agrobot',
-    description: 'AI-based advisory bot for farmers in Kashmir that provides real-time guidance on crop choices, pest management, weather conditions, and market prices.',
+    description: 'AI-based advisory bot for farmers in Kashmir with robust security measures to protect sensitive agricultural data and prevent unauthorized access.',
     features: [
-      'Uses local language processing, regional datasets, and automation to make it accessible and effective for farmers in the valley',
+      'Secure API implementation with rate limiting and input validation',
+      'End-to-end encrypted communications for farmer data privacy',
+      'Uses local language processing and regional datasets',
+      'Secure cloud infrastructure with regular security audits',
     ],
     techStack: [
       { name: 'Python', icon: FaPython },
       { name: 'NLP', icon: FaDatabase },
-      { name: 'Data Analysis', icon: FaDatabase },
+      { name: 'Security', icon: FaShieldAlt },
+      { name: 'Linux', icon: SiLinux },
     ],
     github: 'https://github.com/furmak331/agrobot',
     live: '',
   },
   {
-    title: 'CarWar: Car Rental Website',
-    description: 'Developed a responsive car rental platform with Node.js backend and MySQL database.',
+    title: 'CarWar: Secure Car Rental Platform',
+    description: 'Developed a responsive car rental platform with enhanced security features to protect user data and prevent common web vulnerabilities.',
     features: [
-      'Implemented user authentication and concurrent booking management system',
+      'Implemented secure authentication with JWT and refresh token rotation',
+      'Built-in protection against SQL injection, XSS, and CSRF attacks',
+      'Secure payment processing with PCI-DSS compliance',
+      'Comprehensive logging and monitoring for security incidents',
     ],
     techStack: [
       { name: 'Node.js', icon: FaNodeJs },
@@ -203,9 +214,11 @@ function Projects() {
               <ProjectLink href={project.github} target="_blank" rel="noopener noreferrer">
                 <FaGithub />
               </ProjectLink>
-              <ProjectLink href={project.live} target="_blank" rel="noopener noreferrer">
-                <FaExternalLinkAlt />
-              </ProjectLink>
+              {project.live && (
+                <ProjectLink href={project.live} target="_blank" rel="noopener noreferrer">
+                  <FaExternalLinkAlt />
+                </ProjectLink>
+              )}
             </ProjectLinks>
           </ProjectHeader>
           <ProjectContent>

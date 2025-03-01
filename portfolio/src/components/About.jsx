@@ -5,8 +5,9 @@ import { FaTerminal } from 'react-icons/fa';
 
 const AboutContainer = styled.section`
   padding: 60px 0;
-  background-color: #0a0a0a;
+  background-color: transparent;
 `;
+
 
 const ContentWrapper = styled.div`
   max-width: 800px;
@@ -15,10 +16,12 @@ const ContentWrapper = styled.div`
 `;
 
 const IntroCard = styled(motion.div)`
-  background-color: #111;
+  background-color: rgba(17, 17, 17, 0.7);
   border-left: 3px solid #3DE67B;
   padding: 25px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
 `;
 
 const Title = styled.h2`
@@ -28,14 +31,14 @@ const Title = styled.h2`
   align-items: center;
   gap: 10px;
   color: #3DE67B;
-  font-family: 'Courier New', monospace;
+  font-family: 'Space Grotesk', monospace;
 `;
 
 const IntroText = styled.p`
   font-size: 16px;
   line-height: 1.8;
   color: #e0e0e0;
-  font-family: 'Courier New', monospace;
+  font-family: 'Space Grotesk', monospace;
   margin-bottom: 0;
 `;
 
@@ -55,7 +58,7 @@ function About() {
             Security professional. I break systems to build them stronger.
             Specializing in penetration testing and vulnerability research with a focus on web 
             application security and network exploitation. When systems say "keep out," 
-            Lets dive in even more.
+            I dive in even deeper.
           </IntroText>
         </IntroCard>
       </ContentWrapper>
