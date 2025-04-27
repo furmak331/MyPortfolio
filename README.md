@@ -20,7 +20,7 @@
 ## 🚀 Get Started:
 ```bash
 git clone https://github.com/your-username/MyPortfolio
-cd MyPortfolio
+cd portfolio
 npm install
 npm start
 ```
